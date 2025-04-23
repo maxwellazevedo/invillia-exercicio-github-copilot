@@ -41,6 +41,46 @@ activities = {
     }
 }
 
+# Adding more activities to the in-memory database
+activities.update({
+    "Basketball": {
+        "description": "Team sport played on a rectangular court",
+        "schedule": "Tuesdays and Thursdays, 4:00 PM - 5:30 PM",
+        "max_participants": 15,
+        "participants": []
+    },
+    "Swimming": {
+        "description": "Learn and practice swimming techniques",
+        "schedule": "Mondays and Wednesdays, 3:00 PM - 4:00 PM",
+        "max_participants": 10,
+        "participants": []
+    },
+    "Painting": {
+        "description": "Explore your creativity with colors and brushes",
+        "schedule": "Wednesdays, 4:00 PM - 5:30 PM",
+        "max_participants": 12,
+        "participants": []
+    },
+    "Drama Club": {
+        "description": "Acting, improvisation, and stage performance",
+        "schedule": "Fridays, 3:30 PM - 5:00 PM",
+        "max_participants": 20,
+        "participants": []
+    },
+    "Math Club": {
+        "description": "Solve challenging problems and explore advanced math topics",
+        "schedule": "Thursdays, 3:30 PM - 4:30 PM",
+        "max_participants": 25,
+        "participants": []
+    },
+    "Debate Team": {
+        "description": "Develop public speaking and argumentation skills",
+        "schedule": "Tuesdays, 4:00 PM - 5:00 PM",
+        "max_participants": 18,
+        "participants": []
+    }
+})
+
 
 @app.get("/")
 def root():
@@ -58,6 +98,10 @@ def signup_for_activity(activity_name: str, email: str):
     # Validate activity exists
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
+
+    # Validar se o aluno já está inscrito
+    if email in activities[activity_name]["participants"]:
+        raise HTTPException(status_code=400, detail="Already signed up for this activity")
 
     # Get the specificy activity
     activity = activities[activity_name]
