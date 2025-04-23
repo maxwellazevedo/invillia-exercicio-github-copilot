@@ -232,3 +232,39 @@ body.dark-mode .participant-info h4 {
   margin-bottom: 8px;
   font-size: 14px;
 }
+
+.participant-list {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  list-style-type: none;
+}
+
+body.dark-mode .participant-list {
+  background-color: #1e293b;
+  border-color: #444;
+}
+
+.participant-list li {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  background-color: #e3f2fd;
+  color: #1a237e;
+  font-size: 14px;
+}
+
+body.dark-mode .participant-list li {
+  background-color: #334155;
+  color: #90caf9;
+}
+
+.participant-list li:nth-child(odd) {
+  background-color: #bbdefb;
+}
+
+body.dark-mode .participant-list li:nth-child(odd) {
+  background-color: #475569;
+}
